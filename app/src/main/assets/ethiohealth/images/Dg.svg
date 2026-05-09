@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="550" viewBox="0 0 300 550">
+
+  <!-- Background -->
+  <rect width="300" height="550" rx="20" fill="#1A1A2E"/>
+
+  <!-- Status Bar -->
+  <rect x="15" y="10" width="270" height="25" rx="12" fill="#0F3460"/>
+  <text x="150" y="28" text-anchor="middle" fill="#FFFFFF" font-size="12" font-family="Arial, sans-serif">9:41 AM</text>
+
+  <!-- Header -->
+  <rect x="15" y="45" width="270" height="50" rx="12" fill="#2DAA9E"/>
+  <text x="150" y="76" text-anchor="middle" fill="#FFFFFF" font-size="18" font-family="Arial, sans-serif" font-weight="bold">Symptom Checker</text>
+
+  <!-- Subtitle -->
+  <text x="150" y="120" text-anchor="middle" fill="#CCCCCC" font-size="13" font-family="Arial, sans-serif">Describe your symptoms</text>
+
+  <!-- Input Box -->
+  <rect x="15" y="135" width="270" height="90" rx="10" fill="#16213E" stroke="#2DAA9E" stroke-width="2"/>
+  <text x="30" y="160" fill="#777777" font-size="13" font-family="Arial, sans-serif">Type your symptoms here...</text>
+  <text x="30" y="180" fill="#2DAA9E" font-size="11" font-family="Arial, sans-serif">e.g. headache, fever, stomach pain</text>
+  <text x="30" y="200" fill="#2DAA9E" font-size="11" font-family="Arial, sans-serif">e.g. ራስ ምታት, ትኩሳት, የሆድ ህመም</text>
+
+  <!-- Mic Button -->
+  <rect x="30" y="240" width="110" height="38" rx="19" fill="#2DAA9E"/>
+  <text x="85" y="265" text-anchor="middle" fill="#FFFFFF" font-size="14" font-family="Arial, sans-serif">🎤 Voice</text>
+
+  <!-- Check Button -->
+  <rect x="155" y="240" width="115" height="38" rx="19" fill="#E94560"/>
+  <text x="212" y="265" text-anchor="middle" fill="#FFFFFF" font-size="14" font-family="Arial, sans-serif" font-weight="bold">Analyze</text>
+
+  <!-- Divider -->
+  <line x1="15" y1="300" x2="285" y2="300" stroke="#2DAA9E" stroke-width="1"/>
+  <text x="150" y="320" text-anchor="middle" fill="#2DAA9E" font-size="13" font-family="Arial, sans-serif">Recent History</text>
+
+  <!-- History Item 1 -->
+  <rect x="15" y="335" width="270" height="55" rx="10" fill="#16213E"/>
+  <circle cx="35" cy="362" r="8" fill="#00FF88"/>
+  <text x="50" y="358" fill="#FFFFFF" font-size="13" font-family="Arial, sans-serif">Headache + Fatigue</text>
+  <text x="50" y="378" fill="#888888" font-size="11" font-family="Arial, sans-serif">Low risk - 2 days ago</text>
+
+  <!-- History Item 2 -->
+  <rect x="15" y="400" width="270" height="55" rx="10" fill="#16213E"/>
+  <circle cx="35" cy="427" r="8" fill="#FFD700"/>
+  <text x="50" y="423" fill="#FFFFFF" font-size="13" font-family="Arial, sans-serif">Stomach Pain</text>
+  <text x="50" y="443" fill="#888888" font-size="11" font-family="Arial, sans-serif">Medium risk - 5 days ago</text>
+
+  <!-- History Item 3 -->
+  <rect x="15" y="465" width="270" height="40" rx="10" fill="#16213E"/>
+  <circle cx="35" cy="485" r="8" fill="#00FF88"/>
+  <text x="50" y="490" fill="#FFFFFF" font-size="13" font-family="Arial, sans-serif">Cough + Fever</text>
+
+  <!-- Bottom Nav -->
+  <rect x="15" y="515" width="270" height="25" rx="12" fill="#0F3460"/>
+  <text x="60" y="533" text-anchor="middle" fill="#2DAA9E" font-size="12" font-family="Arial, sans-serif">🏠</text>
+  <text x="120" y="533" text-anchor="middle" fill="#555555" font-size="12" font-family="Arial, sans-serif">🔍</text>
+  <text x="180" y="533" text-anchor="middle" fill="#555555" font-size="12" font-family="Arial, sans-serif">💊</text>
+  <text x="240" y="533" text-anchor="middle" fill="#555555" font-size="12" font-family="Arial, sans-serif">⚙️</text>
+
+</svg>
