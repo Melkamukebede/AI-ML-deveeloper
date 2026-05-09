@@ -17,8 +17,7 @@
 ### የኢትዮጵያ እጅግ የላቀ AI የታገዘ የጤና መድረክ
 
 <p align="center">
-  <img src="https://via.placeholder.com/800x400/10b981/ffffff?text=EthioHealth+AI+Pro" alt="EthioHealth AI Pro Banner" />
-</p>
+<img src="assets/ethiohealth/images/banner.svg" alt="EthioHealth AI Pro Banner" width="100%" /></p>
 
 ---
 
