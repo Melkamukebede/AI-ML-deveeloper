@@ -16,7 +16,8 @@
 ### Ethiopia's Most Advanced AI-Powered Health Platform
 ---
 <p align="center">
-<img src="app/src/main/assets/ethiohealth/images/banner.svg" alt="EthioHealth AI Pro Banner" width="100%" /></p>
+<img src="app/src/main/assets/ethiohealth/images/banner.svg" alt="EthioHealth AI Pro Banner" width="100%" />
+<img src="app/src/main/assets/ethiohealth/images/Dg.svg" alt="EthioHealth AI Pro Banner" width="100%" /></p>
 
 ---
 
