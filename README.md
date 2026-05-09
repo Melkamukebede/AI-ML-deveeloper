@@ -14,8 +14,7 @@
 # 🧬 EthioHealth AI Pro | ኢትዮሄልዝ AI ፕሮ
 
 ### Ethiopia's Most Advanced AI-Powered Health Platform
-### የኢትዮጵያ እጅግ የላቀ AI የታገዘ የጤና መድረክ
-
+---
 <p align="center">
 <img src="app/src/main/assets/ethiohealth/images/banner.svg" alt="EthioHealth AI Pro Banner" width="100%" /></p>
 
@@ -135,7 +134,7 @@
 
 > "To democratize healthcare in Ethiopia by making doctor-level diagnosis accessible to every person, in their language, anytime, anywhere."
 
-> "የዶክተር ደረጃ ምርመራን ለእያንዳንዱ ሰው፣ በራሱ ቋንቋ፣ በማንኛውም ጊዜ፣ በማንኛውም ቦታ ተደራሽ በማድረግ በኢትዮጵያ የጤና አገልግሎትን ዴሞክራሲያዊ ማድረግ።"
+> "የዶክተር ደረጃ ምርመራን ለእያንዳንዱ ሰው፣ በራሱ ቋንቋ፣ በማንኛውም ጊዜ፣ በማንኛውም ቦታ ተደራሽ በማድረግ በኢትዮጵያ የጤና አገልግሎት ምቹ ማድረግ።"
 
 ---
 
@@ -159,28 +158,24 @@
 
 ---
 
-## 📦 Installation | መጫኛ
+## 📦 Installation |
 
 ### Prerequisites | ቅድመ ሁኔታዎች
 
-- A web browser (Chrome/Firefox/Edge) | የድር ማሰሻ (Chrome/Firefox/Edge)
-- (Optional) Groq API Key for AI features | (እንደአማራጭ) ለAI ባህሪያት Groq API ቁልፍ
-- (Optional) Android Studio for native app | (እንደአማራጭ) ለኔቲቭ መተግበሪያ Android Studio
+- A web browser (Chrome/Firefox/Edge) |
+- (Optional) Groq API Key for AI features |
+- (Optional) Android Studio for native app | 
 
 ### Quick Start | ፈጣን ጅምር
-
 ```bash
 # Clone the repository
-# ሪፖዚቶሪውን ይቅዱ
 git clone https://github.com/Melkamukebede/AI-ML-deveeloper.git
 cd EthioHealth-AI-Pro
 
 # Navigate to the web app
-# ወደ ድር መተግበሪያው ይሂዱ
 cd assets/ethiohealth
 
 # Serve locally (choose one)
-# በአካባቢያዊ አገልጋይ ያስኬዱ (አንዱን ይምረጡ)
 
 # Option 1: Python
 python -m http.server 8000
@@ -192,4 +187,3 @@ npx serve .
 php -S localhost:8000
 
 # Then open: http://localhost:8000
-# ከዚያ ይክፈቱ: http://localhost:8000
