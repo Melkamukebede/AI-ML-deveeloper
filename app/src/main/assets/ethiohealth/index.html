@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>EthioHealth AI Pro</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/doctor-features.css">
+    <!-- External Libraries -->
+    <script src="js/lib/dexie.min.js"></script>
+    <script src="js/lib/i18next.min.js"></script>
+    <script src="js/lib/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="js/lib/chart.umd.min.js"></script>
+</head>
+<body>
+    
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo-icon">🧬</span>
+            <div>
+                <h1 class="app-title" data-i18n="app_name">EthioHealth AI Pro</h1>
+                <p class="app-subtitle" data-i18n="ai_agent_active">Grok AI Agent Active</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="ai-badge" id="aiStatusBadge">🤖 Grok AI</span>
+            <button class="lang-switch" id="langToggle" onclick="App.showLanguageModal()">
+                <span id="currentLangFlag">🌐</span>
+                <span id="currentLangText">EN</span>
+            </button>
+            <button class="notification-bell" onclick="App.showNotifications()">
+                🔔
+                <span class="badge" id="notifBadge" style="display:none;">0</span>
+            </button>
+        </div>
+    </header>
+
+<nav class="tabs-container" id="tabNav">
+    <button class="tab-btn active" data-tab="welcome" onclick="App.switchTab('welcome')">
+        <span>🏠</span> <span data-i18n="welcome">Welcome</span>
+    </button>
+    <button class="tab-btn" data-tab="home" onclick="App.switchTab('home')">
+        <span>🏥</span> <span data-i18n="home">Diagnosis</span>
+    </button>
+    <button class="tab-btn" data-tab="symptoms" onclick="App.switchTab('symptoms')">
+        <span>🩺</span> <span data-i18n="symptoms">Symptoms</span>
+    </button>
+    <button class="tab-btn" data-tab="traditional" onclick="App.switchTab('traditional')">
+        <span>🌿</span> <span data-i18n="traditional">Traditional</span>
+    </button>
+    <button class="tab-btn" data-tab="voice" onclick="App.switchTab('voice')">
+        <span>🎤</span> <span data-i18n="voice">Voice AI</span>
+    </button>
+    <button class="tab-btn" data-tab="settings" onclick="App.switchTab('settings')">
+        <span>⚙️</span> <span data-i18n="settings">Settings</span>
+    </button>
+</nav>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main id="contentArea">
+        <!-- ========== WELCOME / ADVERTISING TAB ========== -->
+<section id="tab-welcome" class="tab-content active">
+    
+    <!-- Hero Section -->
+    <div class="welcome-hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-icon">🧬</div>
+            <h1 class="hero-title">EthioHealth AI Pro</h1>
+            <p class="hero-subtitle">Ethiopia's Most Advanced AI-Powered Health Platform</p>
+            <div class="hero-badges">
+                <span class="hero-badge">🤖 Groq AI</span>
+                <span class="hero-badge">📚 PubMed</span>
+                <span class="hero-badge">💊 OpenFDA</span>
+                <span class="hero-badge">🇪🇹 Ethiopian</span>
+            </div>
+            <button class="hero-cta pulse-animation" onclick="App.switchTab('home')">
+                🚀 Start Health Analysis
+                <span class="cta-arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Value Proposition Cards -->
+    <div class="welcome-section">
+        <h2 class="section-title">🏥 Why Choose EthioHealth AI?</h2>
+        <div class="value-cards">
+            <div class="value-card">
+                <div class="value-icon">🧠</div>
+                <h3>Reduce Prescription by Understanding Disease</h3>
+                <p>Our AI explains the "why" behind every diagnosis. Understand your condition before medication. Knowledge reduces unnecessary prescriptions and empowers informed healthcare decisions.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🔍</div>
+                <h3>Diagnose Every Time Symptoms Appear</h3>
+                <p>Real-time analysis whenever symptoms show. No waiting days for appointments. Instant doctor-level differential diagnosis with confidence scoring for every symptom combination.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📚</div>
+                <h3>Minimize Educational Gap in Healthcare</h3>
+                <p>Complex medical knowledge explained simply in Amharic, Oromo, and English. Bridging the gap between medical professionals and patients through accessible health education.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💊</div>
+                <h3>Use What Professional Doctors Use</h3>
+                <p>PubMed research papers, FDA drug databases, Ethiopian Ministry of Health statistics - the same evidence-based tools used by healthcare professionals worldwide.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⏰</div>
+                <h3>24/7 Availability - No Time Limits</h3>
+                <p>Always-on health monitoring. Works completely offline in rural Ethiopia. No internet? No problem. Full analysis available anytime, anywhere, with zero waiting time.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌍</div>
+                <h3>Distribute Health Services Everywhere</h3>
+                <p>Extend quality diagnosis to every corner of Ethiopia. Our platform understands every aspect of disease diagnosis - from symptoms to treatment to traditional remedies.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Platform Capabilities -->
+    <div class="welcome-section">
+        <h2 class="section-title">🔬 Platform Capabilities</h2>
+        <div class="capability-grid">
+            <div class="capability-item">
+                <span class="cap-number">500+</span>
+                <span class="cap-label">Detectable Conditions</span>
+            </div>
+            <div class="capability-item">
+                <span class="cap-number">3</span>
+                <span class="cap-label">Languages (EN/አማ/OM)</span>
+            </div>
+            <div class="capability-item">
+                <span class="cap-number">50+</span>
+                <span class="cap-label">Traditional Herbs</span>
+            </div>
+            <div class="capability-item">
+                <span class="cap-number">24/7</span>
+                <span class="cap-label">Always Available</span>
+            </div>
+            <div class="capability-item">
+                <span class="cap-number">0</span>
+                <span class="cap-label">Data Leaves Device</span>
+            </div>
+            <div class="capability-item">
+                <span class="cap-number">100%</span>
+                <span class="cap-label">Offline Capable</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="welcome-section">
+        <h2 class="section-title">🔄 How It Works</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">📝</div>
+                <h4>Enter Your Vitals</h4>
+                <p>Input blood pressure, glucose, temperature, BMI, and age</p>
+            </div>
+            <div class="step-connector">→</div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">🩺</div>
+                <h4>Select Symptoms</h4>
+                <p>Use body map or holistic checker to select your symptoms</p>
+            </div>
+            <div class="step-connector">→</div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">🤖</div>
+                <h4>AI Analysis</h4>
+                <p>Groq AI + PubMed evidence performs doctor-level diagnosis</p>
+            </div>
+            <div class="step-connector">→</div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-icon">📋</div>
+                <h4>Get Results</h4>
+                <p>Receive diagnosis, treatment options, and traditional remedies</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="welcome-section">
+        <h2 class="section-title">🏆 Trusted By</h2>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <span>🏛️</span>
+                <strong>Ethiopian MoH</strong>
+                <small>Guidelines</small>
+            </div>
+            <div class="trust-item">
+                <span>🏥</span>
+                <strong>WHO Protocols</strong>
+                <small>Standards</small>
+            </div>
+            <div class="trust-item">
+                <span>📚</span>
+                <strong>PubMed</strong>
+                <small>Research</small>
+            </div>
+            <div class="trust-item">
+                <span>💊</span>
+                <strong>OpenFDA</strong>
+                <small>Drug Data</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="welcome-cta-bottom">
+        <h2>Ready to Understand Your Health?</h2>
+        <p>Join thousands of Ethiopians using AI-powered health analysis</p>
+        <button class="hero-cta pulse-animation" onclick="App.switchTab('home')">
+            🧬 Begin Your Health Analysis Now
+        </button>
+    </div>
+
+</section>
+        <!-- ========== HOME TAB ========== -->
+        <section id="tab-home" class="tab-content active">
+            <!-- AI Agent Status -->
+            <div class="glass-card animate-fade-in">
+                <div class="agent-status-ring" id="agentRing">
+                    <div class="ring-pulse"></div>
+                    <span class="agent-emoji">🤖</span>
+                </div>
+                <div class="agent-info">
+                    <h3 data-i18n="health_score">Health Score</h3>
+                    <div class="score-display" id="healthScore">--</div>
+                    <p class="score-label" id="lastUpdateText" data-i18n="updated_now">Updated just now</p>
+                    <p style="font-size:11px;color:#8b5cf6;margin-top:4px;">🧠 Grok AI Analysis Ready</p>
+                </div>
+            </div>
+
+            <!-- Quick Vitals Input -->
+            <div class="glass-card animate-slide-up">
+                <h3 class="card-title" data-i18n="quick_check">⚡ Quick Health Check</h3>
+                <div class="vitals-grid">
+                    <div class="input-group">
+                        <label data-i18n="systolic">Systolic BP</label>
+                        <input type="number" id="inputSystolic" class="form-input" placeholder="120" value="135">
+                        <span class="unit">mmHg</span>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="diastolic">Diastolic BP</label>
+                        <input type="number" id="inputDiastolic" class="form-input" placeholder="80" value="88">
+                        <span class="unit">mmHg</span>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="glucose">Blood Sugar</label>
+                        <input type="number" id="inputGlucose" class="form-input" placeholder="95" value="130">
+                        <span class="unit">mg/dL</span>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="bmi">BMI</label>
+                        <input type="number" id="inputBMI" class="form-input" placeholder="24" value="27" step="0.1">
+                        <span class="unit">kg/m²</span>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="temperature">Temperature</label>
+                        <input type="number" id="inputTemp" class="form-input" placeholder="36.6" value="37.2" step="0.1">
+                        <span class="unit">°C</span>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="age">Age</label>
+                        <input type="number" id="inputAge" class="form-input" placeholder="30" value="45">
+                        <span class="unit">years</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-full pulse-animation" id="analyzeBtn" onclick="App.runAnalysis()">
+                    🧬 <span data-i18n="analyze_now">Analyze with Grok AI</span>
+                </button>
+            </div>
+
+            <!-- Risk Overview -->
+            <div class="glass-card animate-slide-up" id="riskOverview">
+                <h3 class="card-title" data-i18n="risk_overview">📊 AI Risk Assessment</h3>
+                <div id="riskResults">
+                    <div class="placeholder-content">
+                        <span style="font-size:50px;">🔬</span>
+                        <p data-i18n="enter_data">Enter your vitals and click Analyze for AI-powered health assessment</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Trends Chart -->
+            <div class="glass-card animate-slide-up">
+                <h3 class="card-title" data-i18n="trends">📈 Health Trends</h3>
+                <div class="chart-container">
+                    <canvas id="healthTrendChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SYMPTOMS TAB ========== -->
+        <section id="tab-symptoms" class="tab-content">
+            <!-- Quick Presets -->
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="quick_presets">⚡ Quick Symptom Presets</h3>
+                <div class="preset-grid" id="presetGrid">
+                    <div class="preset-card" onclick="App.loadPreset('malaria')">
+                        <span>🦟</span>
+                        <strong data-i18n="malaria_suspect">Malaria Suspect</strong>
+                        <small data-i18n="malaria_desc">Fever, chills, headache</small>
+                    </div>
+                    <div class="preset-card" onclick="App.loadPreset('respiratory')">
+                        <span>🫁</span>
+                        <strong data-i18n="respiratory_infection">Respiratory</strong>
+                        <small data-i18n="respiratory_desc">Cough, fever, chest pain</small>
+                    </div>
+                    <div class="preset-card" onclick="App.loadPreset('digestive')">
+                        <span>🫄</span>
+                        <strong data-i18n="digestive_issues">Digestive Issues</strong>
+                        <small data-i18n="digestive_desc">Nausea, diarrhea, pain</small>
+                    </div>
+                    <div class="preset-card" onclick="App.loadPreset('stress')">
+                        <span>😰</span>
+                        <strong data-i18n="stress_anxiety">Stress & Anxiety</strong>
+                        <small data-i18n="stress_desc">Anxiety, insomnia, fatigue</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Holistic Symptom Checker -->
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="holistic_checker">🩺 Holistic Symptom Checker</h3>
+                
+                <!-- Holistic Category Tabs -->
+                <div class="holistic-tabs">
+                    <button class="holistic-tab active" data-category="body" onclick="App.changeHolisticTab('body')">
+                        <span>🧍</span> <span data-i18n="body">Body</span>
+                    </button>
+                    <button class="holistic-tab" data-category="mind" onclick="App.changeHolisticTab('mind')">
+                        <span>🧠</span> <span data-i18n="mind">Mind</span>
+                    </button>
+                    <button class="holistic-tab" data-category="spirit" onclick="App.changeHolisticTab('spirit')">
+                        <span>✨</span> <span data-i18n="spirit">Spirit</span>
+                    </button>
+                    <button class="holistic-tab" data-category="social" onclick="App.changeHolisticTab('social')">
+                        <span>👥</span> <span data-i18n="social">Social</span>
+                    </button>
+                </div>
+
+                <!-- Body Map Container -->
+                <div id="bodyMapContainer">
+                    <p class="body-map-hint" data-i18n="tap_body">👇 Tap on body part to select symptoms</p>
+                    
+                    <!-- Interactive Body Map SVG -->
+                    <div class="body-map-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" width="200" height="400" id="bodyMapSVG" class="body-map-svg">
+                            <style>
+                                .body-part { fill: #e5e7eb; stroke: #d1d5db; stroke-width: 2; cursor: pointer; transition: all 0.3s; }
+                                .body-part:hover { fill: #d1fae5; stroke: #10b981; stroke-width: 3; filter: drop-shadow(0 0 4px rgba(16,185,129,0.4)); }
+                                .body-part.selected { fill: #10b981; stroke: #059669; stroke-width: 3; filter: drop-shadow(0 0 6px rgba(16,185,129,0.6)); }
+                            </style>
+                            <circle cx="100" cy="35" r="28" class="body-part" data-part="head" id="part-head"/>
+                            <rect x="85" y="63" width="30" height="15" rx="5" class="body-part" data-part="neck" id="part-neck"/>
+                            <rect x="55" y="80" width="90" height="75" rx="12" class="body-part" data-part="chest" id="part-chest"/>
+                            <rect x="60" y="160" width="80" height="65" rx="10" class="body-part" data-part="abdomen" id="part-abdomen"/>
+                            <rect x="15" y="85" width="35" height="25" rx="8" class="body-part" data-part="left_arm" id="part-left_arm"/>
+                            <rect x="10" y="115" width="30" height="55" rx="6" class="body-part" data-part="left_forearm" id="part-left_forearm"/>
+                            <rect x="150" y="85" width="35" height="25" rx="8" class="body-part" data-part="right_arm" id="part-right_arm"/>
+                            <rect x="160" y="115" width="30" height="55" rx="6" class="body-part" data-part="right_forearm" id="part-right_forearm"/>
+                            <circle cx="25" cy="180" r="10" class="body-part" data-part="left_hand" id="part-left_hand"/>
+                            <circle cx="175" cy="180" r="10" class="body-part" data-part="right_hand" id="part-right_hand"/>
+                            <rect x="50" y="230" width="35" height="55" rx="8" class="body-part" data-part="left_leg" id="part-left_leg"/>
+                            <rect x="50" y="290" width="35" height="50" rx="6" class="body-part" data-part="left_calf" id="part-left_calf"/>
+                            <rect x="115" y="230" width="35" height="55" rx="8" class="body-part" data-part="right_leg" id="part-right_leg"/>
+                            <rect x="115" y="290" width="35" height="50" rx="6" class="body-part" data-part="right_calf" id="part-right_calf"/>
+                            <ellipse cx="67" cy="350" rx="18" ry="10" class="body-part" data-part="left_foot" id="part-left_foot"/>
+                            <ellipse cx="133" cy="350" rx="18" ry="10" class="body-part" data-part="right_foot" id="part-right_foot"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Body Part Symptoms -->
+                    <div id="bodyPartSymptoms" class="symptom-list">
+                        <p class="placeholder-text" data-i18n="click_body_part">Click on a body part above to see related symptoms</p>
+                    </div>
+                </div>
+
+                <!-- Category Symptoms Grid -->
+                <div id="categorySymptoms" class="symptom-grid" style="display:none;"></div>
+
+                <!-- Selected Symptoms -->
+                <div class="selected-symptoms-box">
+                    <strong data-i18n="selected_symptoms">📋 Selected Symptoms:</strong>
+                    <div id="selectedSymptomsList">
+                        <span class="placeholder-text-sm" data-i18n="none_selected">None selected - click symptoms above</span>
+                    </div>
+                </div>
+
+                <!-- Duration & Severity -->
+                <div class="symptom-details-row">
+                    <div class="detail-item">
+                        <label data-i18n="duration">⏱️ Duration</label>
+                        <select id="symptomDuration" class="form-input">
+                            <option value="hours" data-i18n="few_hours">Few hours</option>
+                            <option value="1day" data-i18n="one_day">1 day</option>
+                            <option value="2-3days" data-i18n="two_three_days">2-3 days</option>
+                            <option value="week" data-i18n="one_week">1 week</option>
+                            <option value="weeks" data-i18n="several_weeks">Several weeks</option>
+                            <option value="months" data-i18n="months">Months</option>
+                        </select>
+                    </div>
+                    <div class="detail-item">
+                        <label data-i18n="severity">📊 Severity (1-10)</label>
+                        <div class="severity-row">
+                            <input type="range" id="severitySlider" min="1" max="10" value="5" class="severity-slider">
+                            <span id="severityValue" class="severity-number">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-top:12px;">
+                    <label data-i18n="additional_notes">📝 Additional Notes</label>
+                    <textarea id="symptomNotes" class="form-input" rows="2" data-i18n-placeholder="notes_placeholder" placeholder="Describe any other symptoms, medical history, or concerns..."></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-full pulse-animation" id="analyzeSymptomsBtn" onclick="App.analyzeSymptoms()">
+                    🔍 <span data-i18n="analyze_symptoms">AI Diagnose Symptoms with Grok</span>
+                </button>
+            </div>
+            
+            <!-- Symptom Analysis Results -->
+            <div class="glass-card" id="symptomResults" style="display:none;">
+                <h3 class="card-title" data-i18n="analysis_results">📋 Grok AI Analysis Results</h3>
+                <div id="symptomResultsContent"></div>
+                <div id="grokReasoning" class="grok-reasoning-box" style="display:none;">
+                    <h4>🧠 Grok AI Reasoning</h4>
+                    <p id="grokReasoningText"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TRADITIONAL MEDICINE TAB ========== -->
+        <section id="tab-traditional" class="tab-content">
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="ethiopian_herbs">🌿 Ethiopian Traditional Medicine Database</h3>
+                <p class="disclaimer-text" data-i18n="herb_disclaimer">⚠️ Always consult healthcare provider before using traditional remedies, especially with modern medicines.</p>
+                
+                <input type="text" id="herbSearch" class="form-input search-input" data-i18n-placeholder="search_herbs" placeholder="Search herbs by name, use, or condition..." onkeyup="App.searchHerbs()">
+                
+                <div class="herb-categories">
+                    <button class="herb-cat-btn active" onclick="App.filterHerbs('all')" data-i18n="all">📋 All</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('respiratory')" data-i18n="respiratory">🫁 Respiratory</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('digestive')" data-i18n="digestive">🫄 Digestive</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('malaria')" data-i18n="anti_malarial">🦟 Anti-Malarial</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('skin')" data-i18n="skin">🧴 Skin</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('chronic')" data-i18n="chronic">💊 Chronic</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('nutrition')" data-i18n="nutrition">🥗 Nutrition</button>
+                    <button class="herb-cat-btn" onclick="App.filterHerbs('womens')" data-i18n="womens_health">👩 Women</button>
+                </div>
+            </div>
+
+            <div id="herbListContainer">
+                <div id="herbList" class="herb-list"></div>
+            </div>
+
+            <div id="herbDetailCard" class="glass-card herb-detail-full" style="display:none;">
+                <button class="btn btn-secondary back-btn" onclick="App.closeHerbDetail()">
+                    ← <span data-i18n="back_to_list">Back to List</span>
+                </button>
+                <div id="herbDetailContent"></div>
+            </div>
+        </section>
+
+        <!-- ========== VOICE AI TAB ========== -->
+        <section id="tab-voice" class="tab-content">
+            <div class="glass-card text-center">
+                <div class="voice-ring" id="voiceRing">
+                    <span class="voice-emoji">🎤</span>
+                </div>
+                <h3 data-i18n="voice_ai_assistant">Grok Voice AI Assistant</h3>
+                <p data-i18n="voice_description">Speak your symptoms or health questions in any language</p>
+                <div class="voice-status" id="voiceStatus">
+                    <span class="status-dot"></span>
+                    <span data-i18n="ready">Ready to listen</span>
+                </div>
+                <button class="btn btn-primary voice-listen-btn" id="voiceListenBtn" onclick="App.toggleVoiceListen()">
+                    🎤 <span data-i18n="start_listening">Start Listening</span>
+                </button>
+                <div id="voiceTranscript" class="voice-transcript-box">
+                    <p class="placeholder-text" data-i18n="voice_text_appear">Your speech will appear here...</p>
+                </div>
+                <div id="voiceResponse" class="voice-response-box" style="display:none;">
+                    <h4>🤖 Grok AI Response:</h4>
+                    <p id="voiceResponseText"></p>
+                </div>
+            </div>
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="voice_history">📝 Voice History</h3>
+                <div id="voiceHistory"><p class="placeholder-text" data-i18n="no_history">No voice commands yet</p></div>
+            </div>
+        </section>
+
+        <!-- ========== AI REPORT TAB ========== -->
+        <section id="tab-report" class="tab-content">
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="ai_report">📋 Grok AI Comprehensive Report</h3>
+                <div id="reportContent">
+                    <div class="placeholder-content">
+                        <span style="font-size:50px;">📊</span>
+                        <p data-i18n="run_analysis_first">Run health analysis from Home or Symptoms tab to generate AI report</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-full" id="shareReportBtn" style="display:none;" onclick="App.shareReport()">
+                    📤 <span data-i18n="share_report">Share Report</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========== SETTINGS TAB ========== -->
+        <section id="tab-settings" class="tab-content">
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="language_settings">🌐 Language Settings</h3>
+                <div class="language-options" id="languageOptions">
+                    <button class="lang-option active" onclick="App.changeLanguage('en')">
+                        <span class="lang-flag">🇺🇸</span>
+                        <span>English</span>
+                        <span class="lang-check">✓</span>
+                    </button>
+                    <button class="lang-option" onclick="App.changeLanguage('am')">
+                        <span class="lang-flag">🇪🇹</span>
+                        <span>አማርኛ (Amharic)</span>
+                        <span class="lang-check">✓</span>
+                    </button>
+                    <button class="lang-option" onclick="App.changeLanguage('om')">
+                        <span class="lang-flag">🇪🇹</span>
+                        <span>Afaan Oromoo (Oromo)</span>
+                        <span class="lang-check">✓</span>
+                    </button>
+                </div>
+            </div>
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="profile_settings">👤 Profile</h3>
+                <div class="input-group">
+                    <label data-i18n="name">Name</label>
+                    <input type="text" id="profileName" class="form-input" placeholder="Your name">
+                </div>
+                <div class="input-group">
+                    <label data-i18n="age">Age</label>
+                    <input type="number" id="profileAge" class="form-input" value="30">
+                </div>
+                <div class="input-group">
+                    <label data-i18n="location">Location</label>
+                    <input type="text" id="profileLocation" class="form-input" placeholder="Addis Ababa">
+                </div>
+                <button class="btn btn-primary btn-full" onclick="App.saveProfile()" data-i18n="save_profile">💾 Save Profile</button>
+            </div>
+            <div class="glass-card">
+                <h3 class="card-title" data-i18n="notification_settings">🔔 Notifications</h3>
+                <div class="toggle-group">
+                    <span data-i18n="health_reminders">Health Reminders</span>
+                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                </div>
+                <div class="toggle-group">
+                    <span data-i18n="ai_alerts">Grok AI Alerts</span>
+                    <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FLOATING ACTION BUTTONS ============ -->
+    <button class="fab sos-btn" id="sosBtn" onclick="App.triggerEmergency()" title="Emergency SOS">
+        <span>🆘</span>
+    </button>
+    <button class="fab mic-btn" id="micBtn" onclick="App.toggleVoiceListen()" title="Voice Assistant">
+        <span>🎤</span>
+    </button>
+
+    <!-- ============ MODALS & OVERLAYS ============ -->
+    <div id="modalContainer" class="modal-container"></div>
+    <div id="toastContainer" class="toast-container"></div>
+    <div id="loadingOverlay" class="loading-overlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <p class="loading-text" id="loadingText">🤖 Grok AI is analyzing...</p>
+    </div>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="js/utils.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/grok-ai.js"></script>
+    <script src="js/herbs-database.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof App !== 'undefined' && App.init) {
+                App.init();
+                console.log('🧬 EthioHealth AI Pro with Grok AI initialized');
+            }
+        });
+    </script>
+</body>
+</html>
